@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aleksandar Stojkoski — Mechanical Engineering Portfolio</title>
+<meta name="description" content="Mechanical engineering portfolio of Aleksandar Stojkoski — structural design, FEA validation and client engineering projects.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">A. STOJKOSKI</a>
+  <nav class="tab-strip" aria-label="Site sections">
+    <a href="#about" class="tab" data-tab="about"><span class="tab-dot dot-txt"></span>about.txt</a>
+    <a href="#spiderguide" class="tab" data-tab="spiderguide"><span class="tab-dot dot-f3d"></span>spiderguide.f3d</a>
+    <a href="#formula-sae" class="tab" data-tab="formula-sae"><span class="tab-dot dot-f3d"></span>formula-sae.f3d</a>
+    <a href="#bridge" class="tab" data-tab="bridge"><span class="tab-dot dot-f3d"></span>bridge.f3d</a>
+    <a href="#warman-challenge" class="tab" data-tab="warman-challenge"><span class="tab-dot dot-f3d"></span>warman-challenge.f3d</a>
+    <a href="#skills" class="tab" data-tab="skills"><span class="tab-dot dot-bom"></span>toolkit.bom</a>
+    <a href="#contact" class="tab" data-tab="contact"><span class="tab-dot dot-txt"></span>contact.txt</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="eyebrow">Mechanical Engineering Portfolio</p>
+    <h1>Aleksandar Stojkoski</h1>
+    <p class="hero-sub">Third-year Mechanical Engineering (Honours) student turning real client briefs into validated, FEA-checked designs.</p>
+
+    <div class="title-block" role="group" aria-label="Title block">
+      <div class="tb-cell">
+        <span class="tb-label">Drawn by</span>
+        <span class="tb-value">A. Stojkoski</span>
+      </div>
+      <div class="tb-cell">
+        <span class="tb-label">Institution</span>
+        <span class="tb-value">Deakin University, Burwood</span>
+      </div>
+      <div class="tb-cell">
+        <span class="tb-label">Based in</span>
+        <span class="tb-value">Melbourne, VIC</span>
+      </div>
+      <div class="tb-cell">
+        <span class="tb-label">Sheet rev.</span>
+        <span class="tb-value">2026</span>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">View projects</a>
+      <a class="btn btn-ghost" href="assets/resume.pdf" download>Download résumé</a>
+      <a class="btn btn-ghost" href="mailto:aleks.stojkoski00@gmail.com">Email me</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <p class="eyebrow">Sheet 00 — About</p>
+    <h2>What I work on</h2>
+    <div class="about-body">
+      <p>I'm a third-year Mechanical Engineering (Honours) student at Deakin University, Burwood — part of the campus's first engineering cohort. My work sits at the intersection of structural analysis, finite element validation and real client problems: chain hoists that jam mid-show, footings that hit unexpected ground conditions, a motorsport program that needs a credible relaunch.</p>
+      <p>I like the moment a stress contour turns from red to blue just as much as the moment a stakeholder says yes.</p>
+      <p class="about-aside">Outside of FEA, I marshal motorsport circuits at Preston Motorcycle Club and chase early snow at Mt&nbsp;Buller — a different kind of risk assessment, same attention to the edge cases.</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <p class="eyebrow section-eyebrow">Sheets 01–04 — Projects</p>
+    <h2 class="section-title">Selected work</h2>
+
+    <!-- SHEET 01: SPIDERGUIDE -->
+    <article class="sheet reveal" id="spiderguide">
+      <div class="sheet-meta">
+        <span>Sheet 01 / 04</span>
+        <span>Client: Melbourne Park</span>
+        <span>Year: 2026</span>
+        <span>Tools: ABAQUS · Fusion 360</span>
+      </div>
+      <h3>SpiderGuide — Universal Chain Guide Attachment</h3>
+
+      <p><strong>Objective:</strong> design a universal chain guide attachment for Melbourne Park's electric chain hoists, fixing a chain-spooling fault in their live-rigging system — no tools to install, no modification to the hoist, under 5&nbsp;kg.</p>
+
+      <p>I benchmarked five products already on the market, converted the client's verbal requirements into hard design criteria, and led the structural validation of the final assembly — an ABAQUS model covering static, frequency and buckling cases across every AL6061 component.</p>
+
+      <div class="gallery" data-gallery>
+        <div class="gallery-viewport">
+          <div class="gallery-slide is-active">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/spiderguide-prototype.jpg</code>
+            </div>
+            <p class="gallery-caption">3D-printed prototype, full assembly</p>
+          </div>
+          <div class="gallery-slide">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/spiderguide-cad.jpg</code>
+            </div>
+            <p class="gallery-caption">Full CAD assembly (Fusion 360)</p>
+          </div>
+          <div class="gallery-slide">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/spiderguide-fea.jpg</code>
+            </div>
+            <p class="gallery-caption">ABAQUS stress contour, clamp bracket assembly</p>
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <button type="button" class="gallery-prev" aria-label="Previous image">←</button>
+          <span class="gallery-counter">1 / 3</span>
+          <button type="button" class="gallery-next" aria-label="Next image">→</button>
+        </div>
+      </div>
+
+      <p><strong>Result:</strong> every component cleared yield with margin to spare, with the clamp bracket — where the assembly grips the chain bag — governing the design at FOS&nbsp;2.37×. Final weight came in under the 5&nbsp;kg target, delivered to Melbourne Park for client evaluation.</p>
+
+      <div class="verify-block">
+        <p class="verify-label">Component verification — static FEA</p>
+        <table>
+          <thead>
+            <tr><th scope="col">Component</th><th scope="col">Peak stress</th><th scope="col">Allowable</th><th scope="col">Factor of safety</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Base plate</td><td>1.45 MPa</td><td>145 MPa</td><td>~100×</td></tr>
+            <tr><td>Middle bracket</td><td>0.03 MPa</td><td>145 MPa</td><td>4,833×</td></tr>
+            <tr><td>Top plate</td><td>0.029 MPa</td><td>145 MPa</td><td>4,940×</td></tr>
+            <tr class="critical-row"><td>Clamp bracket <span class="tag-critical">critical</span></td><td>61.18 MPa</td><td>145 MPa</td><td>2.37×</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <!-- SHEET 02: FORMULA SAE -->
+    <article class="sheet reveal" id="formula-sae">
+      <div class="sheet-meta">
+        <span>Sheet 02 / 04</span>
+        <span>Role: Co-Lead</span>
+        <span>Status: In progress</span>
+        <span>2026 – Present</span>
+      </div>
+      <h3>Establishing Formula SAE at Deakin Burwood</h3>
+
+      <p><strong>Objective:</strong> build a credible, self-sufficient case for Deakin Burwood's first Formula SAE program — Geelong already runs one, Burwood doesn't, and the leadership team has reason to be cautious after past student projects overran their budgets.</p>
+
+      <p>I'm co-leading the proposal: working directly with the existing program's technical lead, scoping a structure the team can run themselves, and building a staged plan with realistic first-two-year milestones rather than promising a race car on day one.</p>
+
+      <p><strong>Result (in progress):</strong> concept and scope are locked in; stakeholder alignment across both campuses and the leadership business case are both underway.</p>
+
+      <div class="verify-block">
+        <p class="verify-label">Revision history — proposal milestones</p>
+        <table>
+          <thead>
+            <tr><th scope="col">Phase</th><th scope="col">Focus</th><th scope="col">Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Concept &amp; scoping</td><td>Define a self-sufficient, student-run structure</td><td><span class="tag-pass">Complete</span></td></tr>
+            <tr><td>Stakeholder alignment</td><td>Align academic staff &amp; program lead on scope</td><td><span class="tag-progress">In progress</span></td></tr>
+            <tr><td>Leadership proposal</td><td>Business case to senior engineering leadership</td><td><span class="tag-progress">Drafting</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <!-- SHEET 03: BRIDGE -->
+    <article class="sheet reveal" id="bridge">
+      <div class="sheet-meta">
+        <span>Sheet 03 / 04</span>
+        <span>Client: City of Stonnington</span>
+        <span>Year: 2025</span>
+        <span>Tools: SPACE GASS</span>
+      </div>
+      <h3>Cyclist &amp; Pedestrian Bridge — City of Stonnington</h3>
+
+      <p><strong>Objective:</strong> develop the preliminary structural design for a cable-stayed cyclist and pedestrian bridge for the City of Stonnington — main girder, A-frame tower, stay cables and footing — and verify it independently rather than trusting the software alone.</p>
+
+      <p>I modelled the full system in SPACE GASS, cross-checked the output against independent hand calculations, and adapted when the brief changed: a revised geotechnical report dropped the allowable bearing pressure to 100&nbsp;kPa partway through. Rather than restart the structural system, I redesigned the footing alone and revalidated it against the same stability requirements.</p>
+
+      <div class="gallery" data-gallery>
+        <div class="gallery-viewport">
+          <div class="gallery-slide is-active">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/bridge-model.jpg</code>
+            </div>
+            <p class="gallery-caption">SPACE GASS structural model, cable-stayed bridge</p>
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <button type="button" class="gallery-prev" aria-label="Previous image">←</button>
+          <span class="gallery-counter">1 / 1</span>
+          <button type="button" class="gallery-next" aria-label="Next image">→</button>
+        </div>
+      </div>
+
+      <p><strong>Result:</strong> the redesigned footing held compliance under the new ground conditions without touching the rest of the structure.</p>
+
+      <div class="verify-block">
+        <p class="verify-label">Load case verification — revised footing</p>
+        <table>
+          <thead>
+            <tr><th scope="col">Check</th><th scope="col">Requirement</th><th scope="col">Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Bearing</td><td>FOS ≥ 3.0</td><td><span class="tag-pass">Pass</span></td></tr>
+            <tr><td>Sliding</td><td>FOS ≥ 1.5</td><td><span class="tag-pass">Pass</span></td></tr>
+            <tr><td>Overturning</td><td>FOS ≥ 1.5</td><td><span class="tag-pass">Pass</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <!-- SHEET 04: WARMAN CHALLENGE -->
+    <article class="sheet reveal" id="warman-challenge">
+      <div class="sheet-meta">
+        <span>Sheet 04 / 04</span>
+        <span>Competition: Weir Warman "Project FAMINE"</span>
+        <span>Year: 2024</span>
+        <span>Tools: Arduino · CAD</span>
+      </div>
+      <h3>Warman Design &amp; Build Competition — Seed Collection &amp; Deposit Machine</h3>
+
+      <p><strong>Objective:</strong> design and build an autonomous mechanism — inside a 400&nbsp;mm cube, single-activation, 120-second window — to collect and deposit seed pods (tennis balls) onto a pre-built mobile platform, as part of SEM200 Machine Design and Deakin's entry to the 2024 Weir Warman "Project FAMINE" challenge.</p>
+
+      <p>As a team, we built a collapsible, rotating arm controlled via Arduino, run through a full product-development cycle: problem formulation, concept generation and scored concept screening, safety design and FMEA, prototyping, CAD, and a final presentation. My contribution was the drivetrain connection — a cog linking to the steel rod that drives the platform's wheels — and the arm's servo logic, which had to recognise its own position and ascend or descend to pick seeds at different heights, all inside the 120-second limit.</p>
+
+      <div class="gallery" data-gallery>
+        <div class="gallery-viewport">
+          <div class="gallery-slide is-active">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/warman-team.jpg</code>
+            </div>
+            <p class="gallery-caption">Team with the completed machine</p>
+          </div>
+          <div class="gallery-slide">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/warman-arm-cad.jpg</code>
+            </div>
+            <p class="gallery-caption">Arm mechanism — CAD assembly</p>
+          </div>
+          <div class="gallery-slide">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/warman-competition.jpg</code>
+            </div>
+            <p class="gallery-caption">Competition day, Deakin campus heat</p>
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <button type="button" class="gallery-prev" aria-label="Previous image">←</button>
+          <span class="gallery-counter">1 / 3</span>
+          <button type="button" class="gallery-next" aria-label="Next image">→</button>
+        </div>
+      </div>
+
+      <p><strong>Result:</strong> the mechanism worked — the drivetrain held up and the arm reliably found its pickup positions — but motor reliability issues surfaced late in the build, and the team ran out of semester time to resolve them before locking in a sub-120-second run. The right call given the time box, but the clearest lesson from the project: surface integration issues earlier, even at the cost of a less-polished individual component.</p>
+
+      <div class="verify-block">
+        <p class="verify-label">Process verification — product development cycle</p>
+        <table>
+          <thead>
+            <tr><th scope="col">Stage</th><th scope="col">Focus</th><th scope="col">Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Problem formulation</td><td>Define brief against competition rules &amp; constraints</td><td><span class="tag-pass">Complete</span></td></tr>
+            <tr><td>Concept generation &amp; screening</td><td>Generate, score and select arm concept</td><td><span class="tag-pass">Complete</span></td></tr>
+            <tr><td>Safety design &amp; FMEA</td><td>Failure mode analysis across mechanism &amp; platform</td><td><span class="tag-pass">Complete</span></td></tr>
+            <tr><td>CAD &amp; prototyping</td><td>Drivetrain cog, arm assembly, Arduino servo control</td><td><span class="tag-pass">Complete</span></td></tr>
+            <tr class="critical-row"><td>Competition run</td><td>Sub-120s autonomous pick-and-deposit</td><td><span class="tag-progress">Partial — motor reliability unresolved</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+
+  <!-- SKILLS / TOOLKIT -->
+  <section class="skills" id="skills">
+    <p class="eyebrow section-eyebrow">Sheet 05 — Toolkit</p>
+    <h2 class="section-title">Bill of materials</h2>
+
+    <div class="verify-block reveal">
+      <table>
+        <thead>
+          <tr><th scope="col">No.</th><th scope="col">Item</th><th scope="col">Category</th><th scope="col">Applied in</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>01</td><td>ABAQUS FEA</td><td>Structural &amp; analysis</td><td>SpiderGuide</td></tr>
+          <tr><td>02</td><td>SPACE GASS</td><td>Structural &amp; analysis</td><td>Bridge</td></tr>
+          <tr><td>03</td><td>Fusion 360</td><td>CAD</td><td>SpiderGuide</td></tr>
+          <tr><td>04</td><td>Python</td><td>Programming</td><td>Coursework</td></tr>
+          <tr><td>05</td><td>MATLAB</td><td>Programming</td><td>Coursework</td></tr>
+          <tr><td>06</td><td>AI-assisted workflows</td><td>Programming</td><td>Research &amp; documentation</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="working-style-label">Working style</p>
+    <ul class="chip-row">
+      <li>Clear communication &amp; technical presentation</li>
+      <li>Analytical problem-solving</li>
+      <li>Teamwork &amp; collaboration</li>
+      <li>Stakeholder engagement</li>
+      <li>Time management &amp; adaptability</li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <p class="eyebrow">End of sheet</p>
+    <h2>Get in touch</h2>
+    <p>Open to mechanical engineering internships and placements from late 2026. The fastest way to reach me:</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:aleks.stojkoski00@gmail.com">aleks.stojkoski00@gmail.com</a>
+      <a class="btn btn-ghost" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="assets/resume.pdf" download>Résumé (PDF)</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 Aleksandar Stojkoski · Melbourne, VIC · Built with HTML, CSS &amp; a healthy respect for factors of safety.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
