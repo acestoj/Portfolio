@@ -65,9 +65,9 @@
     <p class="eyebrow">Sheet 00 — About</p>
     <h2>What I work on</h2>
     <div class="about-body">
-      <p>I'm a third-year Mechanical Engineering (Honours) student at Deakin University, Burwood — part of the campus's first engineering cohort. My work sits at the intersection of structural analysis, finite element validation and real client problems: chain hoists that jam mid-show, footings that hit unexpected ground conditions, a motorsport program that needs a credible relaunch.</p>
-      <p>I like the moment a stress contour turns from red to blue just as much as the moment a stakeholder says yes.</p>
-      <p class="about-aside">Outside of FEA, I marshal motorsport circuits at Preston Motorcycle Club and chase early snow at Mt&nbsp;Buller — a different kind of risk assessment, same attention to the edge cases.</p>
+      <p>I'm a third-year Mechanical Engineering (Honours) student at Deakin University with an interest in structural analysis, finite element modelling and engineering design. I enjoy solving practical problems where technical analysis meets real-world constraints — whether that's validating a chain hoist redesign, designing bridge structures for challenging site conditions, or developing autonomous robotic systems.</p>
+      <p>Turning a complex engineering problem into a practical solution is only half the job — the other half is communicating it clearly to clients, teammates and stakeholders. Seeing a simulation validate a design is satisfying, but so is delivering an outcome that earns confidence from the people relying on it.</p>
+      <p class="about-aside">Outside engineering, I volunteer as a motorsport marshal and snowboard throughout the Victorian season. Both reinforce the same mindset I bring to engineering work: stay prepared, pay attention to the details, and keep improving.</p>
     </div>
   </section>
 
@@ -95,28 +95,35 @@
           <div class="gallery-slide is-active">
             <div class="media-placeholder">
               <span>Drop image here</span>
-              <code>assets/spiderguide-prototype.jpg</code>
+              <code>assets/spiderguide-fea-combined.jpg</code>
             </div>
-            <p class="gallery-caption">3D-printed prototype, full assembly</p>
+            <p class="gallery-caption">Combined ABAQUS results — static, frequency &amp; buckling</p>
           </div>
           <div class="gallery-slide">
             <div class="media-placeholder">
               <span>Drop image here</span>
               <code>assets/spiderguide-cad.jpg</code>
             </div>
-            <p class="gallery-caption">Full CAD assembly (Fusion 360)</p>
+            <p class="gallery-caption">Final CAD assembly (Fusion 360)</p>
           </div>
           <div class="gallery-slide">
             <div class="media-placeholder">
               <span>Drop image here</span>
-              <code>assets/spiderguide-fea.jpg</code>
+              <code>assets/spiderguide-exploded.jpg</code>
             </div>
-            <p class="gallery-caption">ABAQUS stress contour, clamp bracket assembly</p>
+            <p class="gallery-caption">Exploded view — side &amp; front</p>
+          </div>
+          <div class="gallery-slide">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/spiderguide-prototype.jpg</code>
+            </div>
+            <p class="gallery-caption">3D-printed prototype, full assembly</p>
           </div>
         </div>
         <div class="gallery-controls">
           <button type="button" class="gallery-prev" aria-label="Previous image">←</button>
-          <span class="gallery-counter">1 / 3</span>
+          <span class="gallery-counter">1 / 4</span>
           <button type="button" class="gallery-next" aria-label="Next image">→</button>
         </div>
       </div>
@@ -149,11 +156,11 @@
       </div>
       <h3>Establishing Formula SAE at Deakin Burwood</h3>
 
-      <p><strong>Objective:</strong> build a credible, self-sufficient case for Deakin Burwood's first Formula SAE program — Geelong already runs one, Burwood doesn't, and the leadership team has reason to be cautious after past student projects overran their budgets.</p>
+      <p><strong>Objective:</strong> develop a sustainable, student-led proposal to establish Formula SAE at Deakin University's Burwood campus. The challenge extends beyond building a race car — it means demonstrating to university leadership that the program can operate with clear governance, realistic planning and minimal dependence on academic staff, while complementing the existing program across both campuses.</p>
 
-      <p>I'm co-leading the proposal: working directly with the existing program's technical lead, scoping a structure the team can run themselves, and building a staged plan with realistic first-two-year milestones rather than promising a race car on day one.</p>
+      <p><strong>My role:</strong> co-leading the initiative alongside fellow students and collaborating closely with the technical lead of Deakin's existing motorsport program. Responsibilities include developing the governance framework, defining a staged implementation roadmap, coordinating stakeholders across Burwood and Geelong, and preparing the business case and executive presentation for senior leadership approval.</p>
 
-      <p><strong>Result (in progress):</strong> concept and scope are locked in; stakeholder alignment across both campuses and the leadership business case are both underway.</p>
+      <p><strong>Progress:</strong> developed a phased two-year implementation strategy, established stakeholder engagement across both campuses, and currently preparing the executive proposal to secure approval for the program's launch.</p>
 
       <div class="verify-block">
         <p class="verify-label">Revision history — proposal milestones</p>
@@ -162,9 +169,9 @@
             <tr><th scope="col">Phase</th><th scope="col">Focus</th><th scope="col">Status</th></tr>
           </thead>
           <tbody>
-            <tr><td>Concept &amp; scoping</td><td>Define a self-sufficient, student-run structure</td><td><span class="tag-pass">Complete</span></td></tr>
-            <tr><td>Stakeholder alignment</td><td>Align academic staff &amp; program lead on scope</td><td><span class="tag-progress">In progress</span></td></tr>
-            <tr><td>Leadership proposal</td><td>Business case to senior engineering leadership</td><td><span class="tag-progress">Drafting</span></td></tr>
+            <tr><td>Concept &amp; scoping</td><td>Define governance framework &amp; implementation roadmap</td><td><span class="tag-pass">Complete</span></td></tr>
+            <tr><td>Stakeholder engagement</td><td>Coordinate across Burwood &amp; Geelong campuses</td><td><span class="tag-pass">Established</span></td></tr>
+            <tr><td>Executive proposal</td><td>Business case &amp; presentation to senior leadership</td><td><span class="tag-progress">In progress</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -182,7 +189,7 @@
 
       <p><strong>Objective:</strong> develop the preliminary structural design for a cable-stayed cyclist and pedestrian bridge for the City of Stonnington — main girder, A-frame tower, stay cables and footing — and verify it independently rather than trusting the software alone.</p>
 
-      <p>I modelled the full system in SPACE GASS, cross-checked the output against independent hand calculations, and adapted when the brief changed: a revised geotechnical report dropped the allowable bearing pressure to 100&nbsp;kPa partway through. Rather than restart the structural system, I redesigned the footing alone and revalidated it against the same stability requirements.</p>
+      <p>I modelled the full system in SPACE GASS, cross-checked the output against independent hand calculations, and adapted when the brief changed: a revised geotechnical report dropped the allowable bearing pressure to 100&nbsp;kPa partway through. Rather than restart the structural system, I redesigned the footing alone and revalidated it against the same stability requirements. Member selection covered a 900WB257 welded beam for the main girder, 310UB40.4 crossbeams, and a 219.1×6.4&nbsp;mm CHS backstay, all in Grade&nbsp;300/C350 steel.</p>
 
       <div class="gallery" data-gallery>
         <div class="gallery-viewport">
@@ -193,15 +200,22 @@
             </div>
             <p class="gallery-caption">SPACE GASS structural model, cable-stayed bridge</p>
           </div>
+          <div class="gallery-slide">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/bridge-hand-calcs.jpg</code>
+            </div>
+            <p class="gallery-caption">Independent hand calculations — FBD/SFD/BMD verification</p>
+          </div>
         </div>
         <div class="gallery-controls">
           <button type="button" class="gallery-prev" aria-label="Previous image">←</button>
-          <span class="gallery-counter">1 / 1</span>
+          <span class="gallery-counter">1 / 2</span>
           <button type="button" class="gallery-next" aria-label="Next image">→</button>
         </div>
       </div>
 
-      <p><strong>Result:</strong> the redesigned footing held compliance under the new ground conditions without touching the rest of the structure.</p>
+      <p><strong>Result:</strong> the redesigned footing held compliance under the new ground conditions with comfortable margin, and eccentricity stayed well inside the kern limit. The main girder told a different story — combined biaxial stress under wind and gravity loading exceeded the steel's allowable, and lateral deflection under wind didn't clear the L/300 serviceability limit. Rather than force a pass, the analysis flags both as needing a revised section or supplementary bracing — exactly the kind of finding a preliminary design review is meant to surface.</p>
 
       <div class="verify-block">
         <p class="verify-label">Load case verification — revised footing</p>
@@ -210,9 +224,10 @@
             <tr><th scope="col">Check</th><th scope="col">Requirement</th><th scope="col">Result</th></tr>
           </thead>
           <tbody>
-            <tr><td>Bearing</td><td>FOS ≥ 3.0</td><td><span class="tag-pass">Pass</span></td></tr>
-            <tr><td>Sliding</td><td>FOS ≥ 1.5</td><td><span class="tag-pass">Pass</span></td></tr>
-            <tr><td>Overturning</td><td>FOS ≥ 1.5</td><td><span class="tag-pass">Pass</span></td></tr>
+            <tr><td>Bearing</td><td>FOS ≥ 3.0</td><td><span class="tag-pass">FOS 3.58</span></td></tr>
+            <tr><td>Sliding</td><td>FOS ≥ 1.5</td><td><span class="tag-pass">FOS 9.54</span></td></tr>
+            <tr><td>Overturning</td><td>FOS ≥ 1.5</td><td><span class="tag-pass">FOS 21.72</span></td></tr>
+            <tr class="critical-row"><td>Main girder — biaxial stress <span class="tag-critical">flagged</span></td><td>σ ≤ 310 MPa</td><td><span class="tag-progress">376.5 MPa — needs revision</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -237,9 +252,30 @@
           <div class="gallery-slide is-active">
             <div class="media-placeholder">
               <span>Drop image here</span>
-              <code>assets/warman-team.jpg</code>
+              <code>assets/warman-collapsed.jpg</code>
             </div>
-            <p class="gallery-caption">Team with the completed machine</p>
+            <p class="gallery-caption">Arm in collapsed (stowed) position</p>
+          </div>
+          <div class="gallery-slide">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/warman-extended.jpg</code>
+            </div>
+            <p class="gallery-caption">Arm fully extended for pickup</p>
+          </div>
+          <div class="gallery-slide">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/warman-underneath.jpg</code>
+            </div>
+            <p class="gallery-caption">Drivetrain &amp; cog mechanism, underside view</p>
+          </div>
+          <div class="gallery-slide">
+            <div class="media-placeholder">
+              <span>Drop image here</span>
+              <code>assets/warman-competition.jpg</code>
+            </div>
+            <p class="gallery-caption">On the table, competition day</p>
           </div>
           <div class="gallery-slide">
             <div class="media-placeholder">
@@ -248,17 +284,10 @@
             </div>
             <p class="gallery-caption">Arm mechanism — CAD assembly</p>
           </div>
-          <div class="gallery-slide">
-            <div class="media-placeholder">
-              <span>Drop image here</span>
-              <code>assets/warman-competition.jpg</code>
-            </div>
-            <p class="gallery-caption">Competition day, Deakin campus heat</p>
-          </div>
         </div>
         <div class="gallery-controls">
           <button type="button" class="gallery-prev" aria-label="Previous image">←</button>
-          <span class="gallery-counter">1 / 3</span>
+          <span class="gallery-counter">1 / 5</span>
           <button type="button" class="gallery-next" aria-label="Next image">→</button>
         </div>
       </div>

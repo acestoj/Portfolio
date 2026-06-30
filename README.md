@@ -8,33 +8,43 @@ portfolio/
 ├── css/style.css        ← all the styling/colors/layout
 ├── js/main.js             ← galleries, scroll-reveal, active-tab highlighting
 └── assets/
-    ├── resume.pdf            ← already in here, linked from the Download Résumé buttons
-    ├── spiderguide-prototype.jpg   ← ADD THIS — 3D-printed prototype photo
-    ├── spiderguide-cad.jpg         ← ADD THIS — full CAD assembly render
-    ├── spiderguide-fea.jpg         ← ADD THIS — ABAQUS contour plot
-    └── bridge-model.jpg            ← ADD THIS — SPACE GASS model render
+    ├── resume.pdf                       ← already in here, linked from the Download Résumé buttons
+    │
+    ├── spiderguide-fea-combined.jpg     ← ADD — combined ABAQUS results (static/freq/buckling)
+    ├── spiderguide-cad.jpg              ← ADD — final CAD assembly
+    ├── spiderguide-exploded.jpg         ← ADD — exploded view, side & front
+    ├── spiderguide-prototype.jpg        ← ADD — 3D-printed prototype
+    │
+    ├── bridge-model.jpg                 ← ADD — SPACE GASS structural model
+    ├── bridge-hand-calcs.jpg            ← ADD — hand-calculation / FBD-SFD-BMD sketch
+    │
+    ├── warman-collapsed.jpg             ← ADD — arm in collapsed/stowed position
+    ├── warman-extended.jpg              ← ADD — arm fully extended
+    ├── warman-underneath.jpg            ← ADD — drivetrain/cog mechanism, underside
+    ├── warman-competition.jpg           ← ADD — on the table, competition day
+    └── warman-arm-cad.jpg               ← ADD — arm mechanism CAD assembly
 ```
 
 ---
 
 ## 1. Add your own images
 
-Each project now has a small **gallery** — Previous/Next arrows under the image, with a counter (e.g. "1 / 3"). Open `index.html` and search for `media-placeholder` — every slot names the exact file it expects, e.g.:
+Each project has a small **gallery** — Previous/Next arrows under the image, with a counter. Open `index.html` and search for `media-placeholder` — every slot names the exact file it expects, e.g.:
 
 ```html
 <div class="media-placeholder">
   <span>Drop image here</span>
-  <code>assets/spiderguide-prototype.jpg</code>
+  <code>assets/spiderguide-fea-combined.jpg</code>
 </div>
 ```
 
 To swap a placeholder for a real photo, drop the file into `assets/` with that exact filename, then replace just the `<div class="media-placeholder">...</div>` line inside that slide with:
 
 ```html
-<img src="assets/spiderguide-prototype.jpg" alt="3D-printed SpiderGuide prototype, full assembly">
+<img src="assets/spiderguide-fea-combined.jpg" alt="Combined ABAQUS results showing static, frequency and buckling analysis">
 ```
 
-Leave the rest of the `<div class="gallery-slide">` wrapper and caption alone — only the placeholder div needs swapping for an `<img>`. Got more than 3 photos for a project? Copy an existing `<div class="gallery-slide">...</div>` block within that gallery and add another.
+Leave the rest of the `<div class="gallery-slide">` wrapper and caption alone — only the placeholder div needs swapping for an `<img>`. Want to add or remove a slide? Copy or delete an existing `<div class="gallery-slide">...</div>` block within that gallery — the counter and arrows update automatically.
 
 Keep filenames lowercase with no spaces — `spiderguide-cad.jpg` not `SpiderGuide CAD.jpg` — GitHub Pages is case-sensitive about paths in a way Windows isn't, which is the single most common reason images "work locally but not online."
 
