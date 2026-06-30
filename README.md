@@ -8,45 +8,38 @@ portfolio/
 ├── css/style.css        ← all the styling/colors/layout
 ├── js/main.js             ← galleries, scroll-reveal, active-tab highlighting
 └── assets/
-    ├── resume.pdf                       ← already in here, linked from the Download Résumé buttons
+    ├── resume.pdf                            ← linked from the Download Résumé buttons
     │
-    ├── spiderguide-fea-combined.jpg     ← ADD — combined ABAQUS results (static/freq/buckling)
-    ├── spiderguide-cad.jpg              ← ADD — final CAD assembly
-    ├── spiderguide-exploded.jpg         ← ADD — exploded view, side & front
-    ├── spiderguide-prototype.jpg        ← ADD — 3D-printed prototype
+    ├── spiderguide-clamp-fea.jpg             ← clamp bracket FEA (stress/PEEQ/displacement)
+    ├── spiderguide-chain-fea.jpg             ← chain bracket FEA (stress/PEEQ/frequency mode)
+    ├── spiderguide-cad-exploded.jpg          ← final CAD assembly + exploded views
     │
-    ├── bridge-model.jpg                 ← ADD — SPACE GASS structural model
-    ├── bridge-hand-calcs.jpg            ← ADD — hand-calculation / FBD-SFD-BMD sketch
+    ├── bridge-hand-calcs-verification.jpg    ← main girder hand calcs vs. software output
+    ├── bridge-drawing-elevation.jpg          ← Drawing A-1, full elevation
+    ├── bridge-drawing-tower.jpg              ← Drawing A-3, A-frame tower
     │
-    ├── warman-collapsed.jpg             ← ADD — arm in collapsed/stowed position
-    ├── warman-extended.jpg              ← ADD — arm fully extended
-    ├── warman-underneath.jpg            ← ADD — drivetrain/cog mechanism, underside
-    ├── warman-competition.jpg           ← ADD — on the table, competition day
-    └── warman-arm-cad.jpg               ← ADD — arm mechanism CAD assembly
+    ├── warman-collapsed.jpg                  ← arm collapsed — CAD + physical build
+    └── warman-extended.jpg                   ← drivetrain detail + arm extended
 ```
+
+All eight project images are now real and already in `assets/` — nothing left to drop in for SpiderGuide, Bridge or Warman. Two optional gaps if you want to fill them later: a 3D-printed SpiderGuide prototype shot, and an actual SPACE GASS 3D model render for the Bridge gallery (currently represented by the hand-calc/verification image instead). Neither is required — the site is complete without them.
 
 ---
 
-## 1. Add your own images
+## 1. Adding more images later
 
-Each project has a small **gallery** — Previous/Next arrows under the image, with a counter. Open `index.html` and search for `media-placeholder` — every slot names the exact file it expects, e.g.:
+Each project has a small **gallery** — Previous/Next arrows under the image, with a counter. To add another slide to any gallery, open `index.html`, find the relevant `data-gallery` block, and copy an existing `<div class="gallery-slide">...</div>` entry, swapping in your new filename and caption:
 
 ```html
-<div class="media-placeholder">
-  <span>Drop image here</span>
-  <code>assets/spiderguide-fea-combined.jpg</code>
+<div class="gallery-slide">
+  <img src="assets/your-new-image.jpg" alt="Describe the image for accessibility">
+  <p class="gallery-caption">Your caption here</p>
 </div>
 ```
 
-To swap a placeholder for a real photo, drop the file into `assets/` with that exact filename, then replace just the `<div class="media-placeholder">...</div>` line inside that slide with:
+Drop the actual file into `assets/` with that exact filename. The counter and arrows update automatically — no other code changes needed.
 
-```html
-<img src="assets/spiderguide-fea-combined.jpg" alt="Combined ABAQUS results showing static, frequency and buckling analysis">
-```
-
-Leave the rest of the `<div class="gallery-slide">` wrapper and caption alone — only the placeholder div needs swapping for an `<img>`. Want to add or remove a slide? Copy or delete an existing `<div class="gallery-slide">...</div>` block within that gallery — the counter and arrows update automatically.
-
-Keep filenames lowercase with no spaces — `spiderguide-cad.jpg` not `SpiderGuide CAD.jpg` — GitHub Pages is case-sensitive about paths in a way Windows isn't, which is the single most common reason images "work locally but not online."
+Keep filenames lowercase with no spaces — GitHub Pages is case-sensitive about paths in a way Windows isn't, which is the single most common reason images "work locally but not online."
 
 ## 2. The Warman Challenge section
 

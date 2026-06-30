@@ -280,6 +280,13 @@ main > section{
 .gallery{ margin: 24px 0; }
 .gallery-slide{ display: none; }
 .gallery-slide.is-active{ display: block; }
+.gallery-slide > img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  border: 1px solid var(--paper-line);
+}
 .gallery-caption{
   font-family: var(--font-mono);
   font-size: 0.74rem;
