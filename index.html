@@ -214,15 +214,15 @@
           </div>
           <div class="gallery-slide">
             <img src="assets/bridge-spacegass-stay-cables.png" alt="SPACE GASS axial force diagrams for the stay cables under dead and live load">
-            <p class="gallery-caption">SPACE GASS: stay cable axial forces — dead load (top), live load (bottom)</p>
+            <p class="gallery-caption">SPACE GASS: stay cable axial forces, dead load (top) and live load (bottom)</p>
           </div>
           <div class="gallery-slide">
             <img src="assets/bridge-spacegass-backstay.png" alt="SPACE GASS axial force diagrams for the backstay under dead and live load">
-            <p class="gallery-caption">SPACE GASS: backstay axial forces — dead load (top), live load (bottom)</p>
+            <p class="gallery-caption">SPACE GASS: backstay axial forces, dead load (top) and live load (bottom)</p>
           </div>
           <div class="gallery-slide">
             <img src="assets/bridge-spacegass-aframe.png" alt="SPACE GASS axial force diagrams for the A-frame tower under live and dead load">
-            <p class="gallery-caption">SPACE GASS: A-frame tower axial forces — live load (top), dead load (bottom)</p>
+            <p class="gallery-caption">SPACE GASS: A-frame tower axial forces, live load (top) and dead load (bottom)</p>
           </div>
         </div>
         <div class="gallery-controls">
@@ -249,25 +249,7 @@
         </table>
       </div>
 
-      <p class="verify-label" style="margin-top:20px">What I'd do next: resolving the main girder overstress</p>
-      <div class="decisions-grid">
-        <div class="decision-card">
-          <h4>Increase section capacity</h4>
-          <p>Upsize the 900WB257 main girder to a deeper welded section, or step up to a higher-grade plate, and re-run the combined-actions check — the 376.5&nbsp;MPa result needs roughly a 20% capacity gain to sit back under the 310&nbsp;MPa limit.</p>
-        </div>
-        <div class="decision-card">
-          <h4>Cut the weak-axis demand</h4>
-          <p>The exceedance is biaxial, driven partly by minor-axis bending from lateral wind. Adding transverse bracing or a wind girder between the main members would shed that weak-axis moment — often a lighter fix than upsizing the section outright.</p>
-        </div>
-        <div class="decision-card">
-          <h4>Revisit the stay geometry</h4>
-          <p>Tune the cable-stay spacing and inclination, or introduce an intermediate stay, to lower the peak mid-span moment feeding the girder before committing extra steel.</p>
-        </div>
-        <div class="decision-card">
-          <h4>Re-verify to AS&nbsp;4100</h4>
-          <p>Rebuild the SPACE GASS model with the revised section, confirm the M<sub>sx</sub>/M<sub>sy</sub> biaxial interaction and member capacity by hand to AS&nbsp;4100, and re-check lateral-torsional buckling on the deeper girder.</p>
-        </div>
-      </div>
+      <p><strong>Next steps:</strong> The exceedance is driven mainly by the minor-axis term, a consequence of the small I<sub>y</sub> of the 900WB257, which is also why lateral wind deflection did not satisfy L/300. The first step would be to model the lateral restraint provided by the A-frame, stay cables and transverse bracing, so the girder is not resisting wind in isolation, then re-run the biaxial interaction check. If the combined stress still exceeds 310&nbsp;MPa, a deeper welded section with greater minor-axis capacity would follow, alongside fatigue checks over the 100-year design life.</p>
 
       <div class="peer-review">
         <blockquote>"During discussions, Aleks would actively listen and consider everyone's position and would ask questions to ensure he grasped the information in a helpful way. Aleks is a reliable team member with a good attitude."</blockquote>
@@ -368,25 +350,7 @@
         <div class="flow-step"><div class="flow-node">Competition<br>Entry</div></div>
       </div>
 
-      <p class="verify-label" style="margin-top:20px">What I'd do next: a second iteration</p>
-      <div class="decisions-grid">
-        <div class="decision-card">
-          <h4>Root-cause the motor failures</h4>
-          <p>Diagnose the late reliability issues properly — size the DC gearmotor with real stall-torque and current margin, drive it through a correctly rated H-bridge, and give the motor its own power rail so current spikes can't brown out the Arduino.</p>
-        </div>
-        <div class="decision-card">
-          <h4>Test subsystems earlier</h4>
-          <p>Set subsystem test milestones — bench-test the drivetrain and cycle the arm independently well before full integration — so failures surface with time left to fix them, not on the eve of competition.</p>
-        </div>
-        <div class="decision-card">
-          <h4>Close the loop on the arm</h4>
-          <p>Swap the open-loop servo angles for encoder or limit-switch feedback, giving repeatable pickup and deposit positioning across varying seed heights instead of trusting preset angles to hold true.</p>
-        </div>
-        <div class="decision-card">
-          <h4>Design for swap-out</h4>
-          <p>Make the motor and drivetrain a modular, quick-release unit so a failed component can be replaced in minutes on comp day, keeping a single reliability issue from ending the run.</p>
-        </div>
-      </div>
+      <p><strong>Next steps:</strong> The motor reliability issues would be root-caused rather than worked around, sizing the gearmotor against measured stall torque and current draw and giving it a separate supply so the Arduino cannot brown out. Subsystem test milestones would sit much earlier in the schedule, with the drivetrain and arm validated independently before full integration, and the drivetrain built as a modular unit so a failed component can be swapped out on competition day.</p>
 
       <div class="peer-review" style="margin-top:24px">
         <blockquote>"The drivetrain and arm mechanism performed as intended during testing, however motor reliability issues emerged late in the project and could not be fully resolved before competition. This reinforced the importance of integrating subsystem testing much earlier in the development process rather than leaving full-system validation until the final stages."</blockquote>
