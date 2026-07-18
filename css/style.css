@@ -282,7 +282,9 @@ main > section{
 .gallery-slide.is-active{ display: block; }
 .gallery-slide > img{
   width: 100%;
-  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: var(--paper);
   display: block;
   border-radius: var(--radius);
   border: 1px solid var(--paper-line);
