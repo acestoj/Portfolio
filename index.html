@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
@@ -19,7 +19,6 @@
     <a href="#about" class="tab" data-tab="about"><span class="tab-dot dot-txt"></span>about.txt</a>
     <a href="#spiderguide" class="tab" data-tab="spiderguide"><span class="tab-dot dot-f3d"></span>spiderguide.f3d</a>
     <a href="#cooling-loop" class="tab" data-tab="cooling-loop"><span class="tab-dot dot-slx"></span>cooling-loop.slx</a>
-      <a href="#servo-control" class="tab" data-tab="servo-control"><span class="tab-dot dot-slx"></span>servo-control.slx</a>
       <a href="#jansen-leg" class="tab" data-tab="jansen-leg"><span class="tab-dot dot-f3d"></span>jansen-leg.f3d</a>
     <a href="#bridge" class="tab" data-tab="bridge"><span class="tab-dot dot-f3d"></span>bridge.f3d</a>
     <a href="#warman-challenge" class="tab" data-tab="warman-challenge"><span class="tab-dot dot-f3d"></span>warman-challenge.f3d</a>
@@ -74,13 +73,13 @@
 
   <!-- PROJECTS -->
   <section class="projects" id="projects">
-    <p class="eyebrow section-eyebrow">Sheets 01–06 / Projects</p>
+    <p class="eyebrow section-eyebrow">Sheets 01–05 / Projects</p>
     <h2 class="section-title">Selected work</h2>
 
     <!-- SHEET 01: SPIDERGUIDE -->
     <article class="sheet reveal" id="spiderguide">
       <div class="sheet-meta">
-        <span>Sheet 01 / 06</span>
+        <span>Sheet 01 / 05</span>
         <span>Client: Melbourne Park</span>
         <span>Year: 2026</span>
         <span>Tools: ABAQUS · Fusion 360</span>
@@ -139,7 +138,7 @@
     <!-- SHEET 02: CHILLED-WATER COOLING LOOP CONTROL -->
     <article class="sheet reveal" id="cooling-loop">
       <div class="sheet-meta">
-        <span>Sheet 02 / 06</span>
+        <span>Sheet 02 / 05</span>
         <span>Control systems</span>
         <span>Year: 2026</span>
         <span>Tools: MATLAB &middot; Simulink</span>
@@ -238,101 +237,10 @@
       <p><strong>Next steps:</strong> The final design was checked against the slower of two candidate temperature sensors and a 1.8&times; spread in plant gain, and it held, but only with the faster sensor specified, so that sensor is a requirement rather than a preference. Beyond that, the model is linearised about one operating point and the cooling capacity is represented as a single lag, so the next step would be re-deriving it away from nominal and adding explicit anti-wind-up rather than relying on the controller never saturating.</p>
     </article>
 
-    <!-- SHEET 03: QUBE-SERVO CONTROL -->
-    <article class="sheet reveal" id="servo-control">
-      <div class="sheet-meta">
-        <span>Sheet 03 / 06</span>
-        <span>Control systems</span>
-        <span>Year: 2026</span>
-        <span>Tools: MATLAB &middot; Simulink &middot; QUARC</span>
-      </div>
-      <h3>Rotary Servo Position Control: Identification, PD Design and Ramp Tracking</h3>
-
-      <p><strong>Objective:</strong> Take a rotary servo from an unknown plant to a controller that tracks a moving reference accurately. Identify the motor model experimentally, close a position loop, design PD gains to a stated overshoot specification, then quantify and remove the tracking error that remains when the reference never stops moving.</p>
-
-      <p>The rig is a Quanser QUBE-Servo: a 24&nbsp;V direct-drive motor with an inertia disc and a 2048&nbsp;count/rev optical encoder, driven from Simulink in external mode through QUARC at a 2&nbsp;ms fixed step. The same rotary chain appears in a camera gimbal axis, so I framed the work against that application: amplifier, torque constant, inertia, rate feedback, position integration and encoder feedback all have direct equivalents.</p>
-
-      <div class="design-process">
-        <div class="design-process-col">
-          <h4>System Identification</h4>
-          <ul>
-            <li>Bump test on the open-loop plant to fit a first-order velocity model</li>
-            <li>Gain from &Delta;&omega;<sub>ss</sub>/&Delta;V<sub>m</sub>; time constant at 63.2% of final value</li>
-            <li>Identified K = 23.206&nbsp;rad/s/V and &tau; = 0.0923&nbsp;s</li>
-          </ul>
-        </div>
-        <div class="design-process-col">
-          <h4>Controller Design</h4>
-          <ul>
-            <li>Integrator added for position, giving K/[s(&tau;s+1)]</li>
-            <li>Second-order form matched to get &omega;<sub>n</sub> and &zeta; from k<sub>p</sub> and k<sub>d</sub></li>
-            <li>Derivative taken on the measurement, not the error, to avoid derivative kick</li>
-            <li>Filtered differentiator 100s/(s+100) to stop encoder noise being amplified</li>
-          </ul>
-        </div>
-        <div class="design-process-col">
-          <h4>Tracking Analysis</h4>
-          <ul>
-            <li>Error transfer function derived and the Final Value Theorem applied</li>
-            <li>PD ramp error predicted as R<sub>0</sub>(1+Kk<sub>d</sub>)/Kk<sub>p</sub></li>
-            <li>Integral action tested at k<sub>i</sub> = 0, 5 and 15 to lift the system from Type 1 to Type 2</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="gallery" data-gallery>
-        <div class="gallery-viewport">
-          <div class="gallery-slide is-active">
-            <img src="assets/qube-second-order-trend.png" alt="Two plots comparing theoretical and measured percent overshoot and peak time against proportional gain">
-            <p class="gallery-caption">Proportional gain sweep: measured overshoot and peak time against the second-order prediction</p>
-          </div>
-          <div class="gallery-slide">
-            <img src="assets/qube-pd-design.png" alt="Measured step responses for three PD gain sets plotted against a 2.54 percent overshoot specification">
-            <p class="gallery-caption">Three gain sets against the 2.54% overshoot specification: the design equations produced no overshoot at all</p>
-          </div>
-          <div class="gallery-slide">
-            <img src="assets/qube-pole-migration.png" alt="Closed-loop pole locations in the complex plane for the supplied, designed and final PD gain sets with the locus as derivative gain varies">
-            <p class="gallery-caption">Closed-loop poles for the supplied, designed and final gains, over the locus traced as k<sub>d</sub> varies</p>
-          </div>
-          <div class="gallery-slide">
-            <img src="assets/qube-tracking-error.png" alt="Tracking error against time for integral gains of 0, 5 and 15 showing the Type 1 constant error and Type 2 convergence to zero">
-            <p class="gallery-caption">Ramp tracking error: PD holds a constant offset, integral action drives it into the one-count encoder band</p>
-          </div>
-        </div>
-        <div class="gallery-controls">
-          <button type="button" class="gallery-prev" aria-label="Previous image">&larr;</button>
-          <span class="gallery-counter">1 / 4</span>
-          <button type="button" class="gallery-next" aria-label="Next image">&rarr;</button>
-        </div>
-      </div>
-
-      <p><strong>Result:</strong> The PD design equations did not survive contact with the hardware. Gains calculated for a 2.54% overshoot specification produced a response with no overshoot at all, because the derivative filter that keeps encoder noise out of the loop also changes the dynamics the design equations assumed. Retuning with the filter in place did the same thing. The gains that actually met the specification were found empirically at k<sub>p</sub> = 2.5 and k<sub>d</sub> = 0.065, giving 2.88% overshoot against the 2.54% target. The steady-state work went the other way: the derived ramp error predicted 0.2931&nbsp;rad and the rig measured 0.2782&nbsp;rad, a 5.1% agreement that held up the whole model chain.</p>
-
-      <div class="verify-block">
-        <p class="verify-label">Predicted against measured</p>
-        <table>
-          <thead>
-            <tr><th scope="col">Quantity</th><th scope="col">Predicted</th><th scope="col">Measured</th><th scope="col">Outcome</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>PD ramp error, R<sub>0</sub> = 5 rad/s</td><td>0.2931 rad</td><td>0.2782 rad</td><td><span class="tag-pass">5.1%</span></td></tr>
-            <tr><td>Controller voltage from the error law</td><td>0.1410 V</td><td>0.1405 V</td><td><span class="tag-pass">0.4%</span></td></tr>
-            <tr class="critical-row"><td>Controller voltage from the plant model <span class="tag-critical">gap</span></td><td>0.2155 V</td><td>0.1405 V</td><td><span class="tag-progress">34.8%</span></td></tr>
-            <tr><td>PD overshoot at the final gains</td><td>2.54%</td><td>2.88%</td><td><span class="tag-pass">Spec met</span></td></tr>
-            <tr><td>Ramp error with k<sub>i</sub> = 15</td><td>0 rad</td><td>&lt; 1 encoder count by 1.4 s</td><td><span class="tag-pass">Type 2</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>That third row is the interesting one. The identified plant said 0.2155&nbsp;V was needed to hold 5&nbsp;rad/s; the logged command averaged 0.1405&nbsp;V, a 34.8% shortfall that looks at first like a controller fault. Substituting the measured tracking error back into the control law returns 0.1410&nbsp;V, within half a millivolt of what was logged. The controller was doing exactly what its equation said. The discrepancy sits in the plant model: the effective motor gain at 0.14&nbsp;V is not the gain identified during a step test that ran at a much higher operating point, which deadband compensation and friction would both explain.</p>
-
-      <p><strong>Next steps:</strong> Identify the plant across the operating range rather than at one point, so the model stays usable at the low voltages where the controller actually works. Include the derivative filter in the design equations instead of adding it afterwards, since it moved the response far enough to make the analytical gains useless. Push k<sub>i</sub> until wind-up and saturation appear, because the tested range was nowhere near the limit and five seconds was not long enough to call k<sub>i</sub> = 15 an optimum.</p>
-    </article>
-
-    <!-- SHEET 04: JANSEN LEG LINKAGE -->
+    <!-- SHEET 03: JANSEN LEG LINKAGE -->
     <article class="sheet reveal" id="jansen-leg">
       <div class="sheet-meta">
-        <span>Sheet 04 / 06</span>
+        <span>Sheet 03 / 05</span>
         <span>Mechanism design</span>
         <span>Year: 2026</span>
         <span>Tools: MATLAB · Simscape · Fusion 360</span>
@@ -424,10 +332,10 @@
       <p><strong>Next steps:</strong> The crank speed and gait shape carried over well, but step length and body speed both fell roughly a quarter short. Foam board at 5&nbsp;mm with pierced split-pin holes gives real joint clearance and link flexure, so the effective link lengths are not what the template specified. The next build would use a rigid material with reamed pin holes and bushes, and measure the foot path directly against the predicted curve rather than inferring it from body speed.</p>
     </article>
 
-    <!-- SHEET 05: BRIDGE -->
+    <!-- SHEET 04: BRIDGE -->
     <article class="sheet reveal" id="bridge">
       <div class="sheet-meta">
-        <span>Sheet 05 / 06</span>
+        <span>Sheet 04 / 05</span>
         <span>Client: City of Stonnington</span>
         <span>Year: 2025</span>
         <span>Tools: SPACE GASS</span>
@@ -516,10 +424,10 @@
       </div>
     </article>
 
-    <!-- SHEET 06: WARMAN CHALLENGE -->
+    <!-- SHEET 05: WARMAN CHALLENGE -->
     <article class="sheet reveal" id="warman-challenge">
       <div class="sheet-meta">
-        <span>Sheet 06 / 06</span>
+        <span>Sheet 05 / 05</span>
         <span>Competition: Weir Warman "Project FAMINE"</span>
         <span>Year: 2024</span>
         <span>Tools: Arduino · CAD</span>
@@ -615,7 +523,7 @@
 
   <!-- SKILLS / TOOLKIT -->
   <section class="skills" id="skills">
-    <p class="eyebrow section-eyebrow">Sheet 07 / Toolkit</p>
+    <p class="eyebrow section-eyebrow">Sheet 06 / Toolkit</p>
     <h2 class="section-title">Bill of materials</h2>
 
     <div class="verify-block reveal">
@@ -624,8 +532,8 @@
           <tr><th scope="col">No.</th><th scope="col">Item</th><th scope="col">Category</th><th scope="col">Applied in</th></tr>
         </thead>
         <tbody>
-          <tr><td>01</td><td>MATLAB</td><td>Modelling &amp; analysis</td><td>Servo control · Jansen leg</td></tr>
-          <tr><td>02</td><td>Simulink</td><td>Control systems</td><td>Servo control</td></tr>
+          <tr><td>01</td><td>MATLAB</td><td>Modelling &amp; analysis</td><td>Cooling loop · Jansen leg</td></tr>
+          <tr><td>02</td><td>Simulink</td><td>Control systems</td><td>Cooling loop</td></tr>
           <tr><td>03</td><td>Simscape Multibody</td><td>Dynamics</td><td>Jansen leg</td></tr>
           <tr><td>04</td><td>ANSYS Fluent</td><td>CFD</td><td>Heat sink lab</td></tr>
           <tr><td>05</td><td>ABAQUS FEA</td><td>Structural &amp; analysis</td><td>SpiderGuide</td></tr>
