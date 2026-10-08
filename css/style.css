@@ -134,6 +134,7 @@ code{
 
 .tab-dot{ width: 7px; height: 7px; border-radius: 50%; flex: none; }
 .dot-f3d{ background: #2E86AB; }
+.dot-slx{ background: var(--green); }
 .dot-bom{ background: var(--orange); }
 .dot-txt{ background: var(--muted); }
 
