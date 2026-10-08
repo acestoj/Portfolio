@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 
@@ -18,7 +18,8 @@
   <nav class="tab-strip" aria-label="Site sections">
     <a href="#about" class="tab" data-tab="about"><span class="tab-dot dot-txt"></span>about.txt</a>
     <a href="#spiderguide" class="tab" data-tab="spiderguide"><span class="tab-dot dot-f3d"></span>spiderguide.f3d</a>
-    <a href="#servo-control" class="tab" data-tab="servo-control"><span class="tab-dot dot-slx"></span>servo-control.slx</a>
+    <a href="#cooling-loop" class="tab" data-tab="cooling-loop"><span class="tab-dot dot-slx"></span>cooling-loop.slx</a>
+      <a href="#servo-control" class="tab" data-tab="servo-control"><span class="tab-dot dot-slx"></span>servo-control.slx</a>
       <a href="#jansen-leg" class="tab" data-tab="jansen-leg"><span class="tab-dot dot-f3d"></span>jansen-leg.f3d</a>
     <a href="#bridge" class="tab" data-tab="bridge"><span class="tab-dot dot-f3d"></span>bridge.f3d</a>
     <a href="#warman-challenge" class="tab" data-tab="warman-challenge"><span class="tab-dot dot-f3d"></span>warman-challenge.f3d</a>
@@ -73,13 +74,13 @@
 
   <!-- PROJECTS -->
   <section class="projects" id="projects">
-    <p class="eyebrow section-eyebrow">Sheets 01–05 / Projects</p>
+    <p class="eyebrow section-eyebrow">Sheets 01–06 / Projects</p>
     <h2 class="section-title">Selected work</h2>
 
     <!-- SHEET 01: SPIDERGUIDE -->
     <article class="sheet reveal" id="spiderguide">
       <div class="sheet-meta">
-        <span>Sheet 01 / 05</span>
+        <span>Sheet 01 / 06</span>
         <span>Client: Melbourne Park</span>
         <span>Year: 2026</span>
         <span>Tools: ABAQUS · Fusion 360</span>
@@ -135,10 +136,112 @@
       </div>
     </article>
 
-    <!-- SHEET 02: QUBE-SERVO CONTROL -->
+    <!-- SHEET 02: CHILLED-WATER COOLING LOOP CONTROL -->
+    <article class="sheet reveal" id="cooling-loop">
+      <div class="sheet-meta">
+        <span>Sheet 02 / 06</span>
+        <span>Control systems</span>
+        <span>Year: 2026</span>
+        <span>Tools: MATLAB &middot; Simulink</span>
+      </div>
+      <h3>Chilled-Water Cooling Loop: Controller Design, Tuning and Validation</h3>
+
+      <p><strong>Objective:</strong> Design a single fixed-gain controller for a chilled-water cooling loop that holds two very different duties without retuning between them: pull the outlet temperature down 1&nbsp;&deg;C on command inside 120&nbsp;s with under 10% overshoot, and reject a sustained loss of cooling capacity while keeping the temperature within 0.03&nbsp;&deg;C of nominal.</p>
+
+      <p>This was my individual scope within a university team project designing a hydrogen refuelling plant: one of four sub-systems, each taken by a different member, with the sub-systems meeting at shared interfaces. My part was the cooling loop and the fan that drives it. The plant parameters and the two test scenarios were set by the brief, so the engineering here is the controller, not the facility: a second-order linearised model, a fan with 600&nbsp;rpm of authority either side of its operating point, and a specification that proportional control cannot meet.</p>
+
+      <div class="design-process">
+        <div class="design-process-col">
+          <h4>Stability Analysis</h4>
+          <ul>
+            <li>Block-diagram reduction to the closed-loop and disturbance transfer functions</li>
+            <li>Root locus solved by hand for the breakaway at k<sub>p</sub> = 8.15, confirmed in MATLAB at 8.17</li>
+            <li>Routh array showed stability for every positive gain, so no ultimate gain exists</li>
+          </ul>
+        </div>
+        <div class="design-process-col">
+          <h4>Tuning Progression</h4>
+          <ul>
+            <li>P, then PI, then PID, each stage triggered by a measured failure of the last</li>
+            <li>1960-design grid search across the PI gain space, evaluated on both scenarios</li>
+            <li>Closed-loop Ziegler&ndash;Nichols ruled out, open-loop reaction curve used instead</li>
+          </ul>
+        </div>
+        <div class="design-process-col">
+          <h4>Actuator Reality</h4>
+          <ul>
+            <li>Fan saturation modelled, exposing integrator wind-up the linear design hid</li>
+            <li>Derivative moved onto the measurement to remove derivative kick</li>
+            <li>Setpoint weighting swept, then held against sensor lag and a 1.8&times; plant-gain spread</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gallery" data-gallery>
+        <div class="gallery-viewport">
+          <div class="gallery-slide is-active">
+            <img src="assets/h2-block-diagram.png" alt="Simulink block diagram of a two-degree-of-freedom PID controller with setpoint weighting, filtered derivative on the measurement, reverse-action block, fan saturation and a disturbance input">
+            <p class="gallery-caption">Simulink model: two-degree-of-freedom PID built from discrete gain, integrator and filtered-derivative blocks, with reverse action, fan saturation and the disturbance entering at the plant input</p>
+          </div>
+          <div class="gallery-slide">
+            <img src="assets/h2-p-control.png" alt="Temperature and fan speed responses under proportional control at three different gains">
+            <p class="gallery-caption">Proportional control at three gains: each one meets a different requirement and fails the others</p>
+          </div>
+          <div class="gallery-slide">
+            <img src="assets/h2-pi-control.png" alt="Temperature and fan speed responses under proportional-integral control for both scenarios">
+            <p class="gallery-caption">PI control removes the steady-state error but cannot meet both 120&nbsp;s limits, because the pole sum is fixed</p>
+          </div>
+          <div class="gallery-slide">
+            <img src="assets/h2-zn-windup.png" alt="Response under Ziegler-Nichols PID tuning showing large overshoot and the fan held at its saturation limit">
+            <p class="gallery-caption">Ziegler&ndash;Nichols PID: the fan sits at its limit for about 18&nbsp;s while the integrator keeps accumulating, giving 66.4% overshoot</p>
+          </div>
+          <div class="gallery-slide">
+            <img src="assets/h2-constraint-chain.png" alt="Four responses showing the progression from an ideal linear PID design to a realisable controller within actuator limits">
+            <p class="gallery-caption">From linear design to realisable controller: the ideal design demands 3593&nbsp;rpm against a 1200&nbsp;rpm limit, and each fix below brings it back inside</p>
+          </div>
+          <div class="gallery-slide">
+            <img src="assets/h2-final-response.png" alt="Final controller response for both the setpoint change and the disturbance rejection scenarios">
+            <p class="gallery-caption">Final controller on both scenarios, same gains, no retuning</p>
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <button type="button" class="gallery-prev" aria-label="Previous image">&larr;</button>
+          <span class="gallery-counter">1 / 6</span>
+          <button type="button" class="gallery-next" aria-label="Next image">&rarr;</button>
+        </div>
+      </div>
+
+      <p><strong>Result:</strong> A two-degree-of-freedom PID, k<sub>p</sub> = 527&nbsp;rpm/&deg;C, k<sub>i</sub> = 11.07, k<sub>d</sub> = 4956, derivative filter 2&nbsp;s, setpoint weight 0.6. It meets both scenarios on one set of gains: zero overshoot and 68.8&nbsp;s settling on the setpoint change, 98.0&nbsp;s recovery and no steady-state deviation under the disturbance, with the fan peaking at 922&nbsp;rpm against a 1200&nbsp;rpm ceiling. Getting there took nine designs, and the useful part of the work is why each of the first eight failed.</p>
+
+      <div class="verify-block">
+        <p class="verify-label">Design iteration: nine candidates against the requirements</p>
+        <table>
+          <thead>
+            <tr><th scope="col">#</th><th scope="col">Design</th><th scope="col">Overshoot</th><th scope="col">Settling</th><th scope="col">Peak fan</th><th scope="col">Why it failed</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>P, k<sub>p</sub> = 177</td><td>10.0%</td><td>105.1 s</td><td>777 rpm</td><td><span class="tag-progress">31.8% steady-state error</span></td></tr>
+            <tr><td>2</td><td>P, k<sub>p</sub> = 1570</td><td>33.2%</td><td>105.3 s</td><td>1200 rpm</td><td><span class="tag-progress">Overshoot, fan saturated</span></td></tr>
+            <tr><td>3</td><td>PI, best of 1960</td><td>9.3%</td><td>133.2 s</td><td>&mdash;</td><td><span class="tag-progress">Pole sum fixed, too slow</span></td></tr>
+            <tr><td>4</td><td>Ziegler&ndash;Nichols PID</td><td>66.4%</td><td>141.7 s</td><td>1200 rpm</td><td><span class="tag-progress">Integrator wind-up</span></td></tr>
+            <tr><td>5</td><td>PIDF, linear only</td><td>8.4%</td><td>75.2 s</td><td>3593 rpm</td><td><span class="tag-progress">Unrealisable demand</span></td></tr>
+            <tr><td>6</td><td>PIDF + saturation</td><td>15.4%</td><td>120.7 s</td><td>1200 rpm</td><td><span class="tag-progress">Wind-up returns</span></td></tr>
+            <tr><td>7</td><td>Derivative on measurement</td><td>17.2%</td><td>127.0 s</td><td>1130 rpm</td><td><span class="tag-progress">Slow reference zero</span></td></tr>
+            <tr><td>8</td><td>Setpoint weight b = 0.7</td><td>2.1%</td><td>78.5 s</td><td>974 rpm</td><td><span class="tag-progress">Fails combined worst case</span></td></tr>
+            <tr class="critical-row"><td>9</td><td>Setpoint weight b = 0.6 <span class="tag-critical">final</span></td><td>0.0%</td><td>68.8 s</td><td>922 rpm</td><td><span class="tag-pass">Passes all</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Design 5 is the one worth dwelling on. On paper it was the best controller in the set: 8.4% overshoot, 75.2&nbsp;s settling, every requirement met. It also asked the fan for 3593&nbsp;rpm, three times what the hardware can deliver, almost all of it derivative kick acting on the instant the setpoint steps. Nothing in the linear simulation showed that, because a linear model has no limits in it. Putting the saturation block back in turned the best design into one that overshot 15.4%, and fixing it properly meant changing the controller structure rather than the gains: derivative onto the measurement, then setpoint weighting to undo the sluggishness that introduced. Designs 5 through 9 are all the same gains. Only the structure moved.</p>
+
+      <p><strong>Next steps:</strong> The final design was checked against the slower of two candidate temperature sensors and a 1.8&times; spread in plant gain, and it held, but only with the faster sensor specified, so that sensor is a requirement rather than a preference. Beyond that, the model is linearised about one operating point and the cooling capacity is represented as a single lag, so the next step would be re-deriving it away from nominal and adding explicit anti-wind-up rather than relying on the controller never saturating.</p>
+    </article>
+
+    <!-- SHEET 03: QUBE-SERVO CONTROL -->
     <article class="sheet reveal" id="servo-control">
       <div class="sheet-meta">
-        <span>Sheet 02 / 05</span>
+        <span>Sheet 03 / 06</span>
         <span>Control systems</span>
         <span>Year: 2026</span>
         <span>Tools: MATLAB &middot; Simulink &middot; QUARC</span>
@@ -226,10 +329,10 @@
       <p><strong>Next steps:</strong> Identify the plant across the operating range rather than at one point, so the model stays usable at the low voltages where the controller actually works. Include the derivative filter in the design equations instead of adding it afterwards, since it moved the response far enough to make the analytical gains useless. Push k<sub>i</sub> until wind-up and saturation appear, because the tested range was nowhere near the limit and five seconds was not long enough to call k<sub>i</sub> = 15 an optimum.</p>
     </article>
 
-    <!-- SHEET 03: JANSEN LEG LINKAGE -->
+    <!-- SHEET 04: JANSEN LEG LINKAGE -->
     <article class="sheet reveal" id="jansen-leg">
       <div class="sheet-meta">
-        <span>Sheet 03 / 05</span>
+        <span>Sheet 04 / 06</span>
         <span>Mechanism design</span>
         <span>Year: 2026</span>
         <span>Tools: MATLAB · Simscape · Fusion 360</span>
@@ -321,10 +424,10 @@
       <p><strong>Next steps:</strong> The crank speed and gait shape carried over well, but step length and body speed both fell roughly a quarter short. Foam board at 5&nbsp;mm with pierced split-pin holes gives real joint clearance and link flexure, so the effective link lengths are not what the template specified. The next build would use a rigid material with reamed pin holes and bushes, and measure the foot path directly against the predicted curve rather than inferring it from body speed.</p>
     </article>
 
-    <!-- SHEET 04: BRIDGE -->
+    <!-- SHEET 05: BRIDGE -->
     <article class="sheet reveal" id="bridge">
       <div class="sheet-meta">
-        <span>Sheet 04 / 05</span>
+        <span>Sheet 05 / 06</span>
         <span>Client: City of Stonnington</span>
         <span>Year: 2025</span>
         <span>Tools: SPACE GASS</span>
@@ -413,10 +516,10 @@
       </div>
     </article>
 
-    <!-- SHEET 05: WARMAN CHALLENGE -->
+    <!-- SHEET 06: WARMAN CHALLENGE -->
     <article class="sheet reveal" id="warman-challenge">
       <div class="sheet-meta">
-        <span>Sheet 05 / 05</span>
+        <span>Sheet 06 / 06</span>
         <span>Competition: Weir Warman "Project FAMINE"</span>
         <span>Year: 2024</span>
         <span>Tools: Arduino · CAD</span>
@@ -512,7 +615,7 @@
 
   <!-- SKILLS / TOOLKIT -->
   <section class="skills" id="skills">
-    <p class="eyebrow section-eyebrow">Sheet 06 / Toolkit</p>
+    <p class="eyebrow section-eyebrow">Sheet 07 / Toolkit</p>
     <h2 class="section-title">Bill of materials</h2>
 
     <div class="verify-block reveal">
