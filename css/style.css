@@ -223,7 +223,40 @@ main > section{
 /* ====================================================
    ABOUT
 ==================================================== */
+.about-layout{
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
 .about-body{ max-width: 42em; }
+
+.about-portrait{
+  margin: 0;
+  background: var(--panel);
+  border: 1px solid var(--ink);
+  padding: 10px;
+}
+.about-portrait img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.about-portrait figcaption{
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border-top: 1px solid var(--paper-line);
+  margin-top: 10px;
+  padding-top: 8px;
+}
+
+@media (max-width: 680px){
+  .about-layout{ grid-template-columns: 1fr; gap: 24px; }
+  .about-portrait{ max-width: 200px; }
+}
 .about-aside{
   color: var(--muted);
   font-size: 0.95rem;
